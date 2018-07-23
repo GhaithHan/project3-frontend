@@ -1,0 +1,23 @@
+
+
+<h2>Building List</h2>
+
+<button routerLink="/building/addbuilding">add building</button>
+
+
+<div>
+
+  <ul>
+    <li *ngFor="let onebuilding of buildings">
+      <img [src]="onebuilding.image" />
+      <h3>{{onebuilding.adress}}</h3>
+      <p>by {{onebuilding.promoter}}</p>
+      <br />
+      <a [routerLink]="['/building', onebuilding._id]">Acess Platform</a>
+
+    </li>
+  </ul>
+
+</div>
+
+

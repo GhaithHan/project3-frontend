@@ -1,0 +1,46 @@
+<div>
+
+    <h2>add a new Building</h2>
+
+    
+    <form (ngSubmit)="buildingSubmit()">
+      <label>
+        Adress:
+        <input [(ngModel)]="userForm.adress" name="adress" type="text" placeholder="40 Rue de colisé Paris" />
+      </label>
+      <br />
+    
+      <label>
+        Promoter:
+        <input [(ngModel)]="userForm.promoter" name="promoter" type="text" placeholder="Kaufmann and Broad" />
+      </label>
+      <br />
+
+         <label>
+            Functional Since:
+            <input [(ngModel)]="userForm.dateOfoperation" name="dateOfoperation" type="date" placeholder="Kaufmann and Broad" />
+          </label>
+          <br />
+
+          <label>
+              Building Budget:
+              <input [(ngModel)]="userForm.budgetDisposed" name="budgetDisposed" type="number" placeholder="Kaufmann and Broad" />
+            </label>
+            <br />
+
+            <label>
+               Inhabitants should pay before:
+                <input [(ngModel)]="userForm.dueDate" name="dueDate" type="date" placeholder="7/08/2018" />
+              </label>
+              <br />
+    
+      <label>
+        Image URL:
+        <input [(ngModel)]="userForm.image" name="image" type="text" placeholder="http://example.com/building.png" />
+      </label>
+      <br />
+    
+      <button >Submit My new Property</button>
+    </form>
+
+</div>

@@ -1,0 +1,103 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.css">
+
+
+
+<div *ngIf="appState == 'default'" class="row">
+  <div class="large-6 columns">
+    <button class="button" (click)="changeState('add')">Add Residents</button>
+  </div>
+</div>
+
+
+<!-- ADD FORM -->
+<div *ngIf="appState == 'add'">
+  <div class="large-12 columns">
+    <h3>Add Residents</h3>
+    <form (ngSubmit)= residentSubmit()>
+        <div class="row">
+          <div class="large-6 columns">
+             <label> First Name
+              <input [(ngModel)]="userForm.firstName" type="text" name="firstName" placeholder="first Name" >
+              </label>
+          </div> 
+ 
+        </div>
+        
+        
+        <div class="row">
+          <div class="medium-6 columns">
+            <label>Last Name
+              <input [(ngModel)]="userForm.lastName" type="text" placeholder="lastName" name="lastName">
+            </label>
+          </div>
+          <div class="medium-6 columns">
+            <label>Email
+              <input [(ngModel)]="userForm.email" type="text" placeholder="Email" name="email">
+            </label>
+          </div>
+        </div>
+        
+        
+        <div class="row">
+          <div class="large-12">
+            <button>Submit Resident</button>  
+          </div>  
+        </div>
+    </form>  
+  </div>  
+</div>
+
+
+<div *ngIf="appState == 'extend'">
+  <div class="row">
+    <div class="large-12 large-1-offset columns">
+      <button class="button alert" (click)="changeState('default')">Go back</button>  
+    </div>  
+  </div>
+  <div *ngFor="let resident of residents">
+    <div *ngIf="resident._id == activeKey">
+      <div class="row">
+        <div class="large-5 columns large-offset-1">
+          <h3>{{resident.firstName}}</h3>
+          <p>{{resident.lastName}}</p>
+          <p>Years In Business: {{resident.email}}
+        </div>   
+      </div>  
+    </div> 
+  </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns">
+      <div >
+          <table>
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Category</th>
+                <th>Phone</th>
+                <th></th>  
+              </tr>  
+            </thead>
+            <tbody>
+              <tr >
+                  <td>compagny 1</td>
+                  <td>category 2</td>
+                  <td>phone 3</td>
+                  <td>
+                    <button  class="button">More</button>
+                    <button  class="button secondary">Edit</button>
+                    <button  class="button alert">Delete</button>
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>  
+    </div>  
+  </div>
+
+  <script
+  src="https://code.jquery.com/jquery-1.12.4.js"
+  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.js"></script>
