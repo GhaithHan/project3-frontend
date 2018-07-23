@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 
-const backendUrl = "http://localhost:3000";
+import { environment } from "../../environments/environment";
+
+const { backendUrl } = environment;
 
 @Injectable({
   providedIn: 'root'
