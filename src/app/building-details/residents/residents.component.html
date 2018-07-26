@@ -2,15 +2,15 @@
 
 
 
-<div *ngIf="appState == 'default'" class="row">
+<!-- <div *ngIf="appState == 'default'" class="row">
   <div class="large-6 columns">
     <button class="button" (click)="changeState('add')">Add Residents</button>
   </div>
-</div>
+</div> -->
 
 
 <!-- ADD FORM -->
-<div *ngIf="appState == 'add'">
+<!-- <div *ngIf="appState == 'add'">
   <div class="large-12 columns">
     <h3>Add Residents</h3>
     <form (ngSubmit)= residentSubmit()>
@@ -45,10 +45,10 @@
         </div>
     </form>  
   </div>  
-</div>
+</div> -->
 
 
-<div *ngIf="appState == 'extend'">
+<!-- <div *ngIf="appState == 'extend'">
   <div class="row">
     <div class="large-12 large-1-offset columns">
       <button class="button alert" (click)="changeState('default')">Go back</button>  
@@ -94,6 +94,48 @@
           </table>
       </div>  
     </div>  
+  </div> -->
+
+  <div>
+
+    <h2>add a new Resident</h2>
+
+    
+    <form (ngSubmit)="residentSubmit()">
+      <label>
+        firstName
+        <input [(ngModel)]="userForm.firstName" name="firstName" type="text" placeholder="40 Rue de colisé Paris" />
+      </label>
+      <br />
+    
+      <label>
+       lastName
+        <input [(ngModel)]="userForm.lastName" name="lastName" type="text" placeholder="Kaufmann and Broad" />
+      </label>
+      <br />
+
+         <label>
+            email
+            <input [(ngModel)]="userForm.email" name="email" type="text" placeholder="Kaufmann and Broad" />
+          </label>
+          <br />
+    
+      <button >Submit My new resident</button>
+    </form>
+
+</div>
+
+
+  <div>
+
+    <ul>
+      <li *ngFor="let resident of residents">
+        <h3>{{resident.firstName}}</h3>
+        <p>by {{resident.lastName}}</p>
+        <br />
+      </li>
+    </ul>
+  
   </div>
 
   <script

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BuildingSubmission, BuildingService, Building } from '../api/building.service';
+import { ResidentService } from '../api/resident.service';
+import { SuggestionService } from '../api/suggestion.service';
+
+
 
 
 @Component({
@@ -14,7 +18,9 @@ export class BuildingComponent implements OnInit {
 
   constructor(
     private myBuildingServ: BuildingService,
-    private myRouterServ: Router
+    private myRouterServ: Router,
+    private myResidentServ: ResidentService,
+    private mySuggestionServ: SuggestionService
   ) { }
 
   ngOnInit() {
@@ -31,6 +37,11 @@ export class BuildingComponent implements OnInit {
         alert("Sorry! We couldn't get our list of buildings.😏 ");
         console.log(err);
     });
+  }
+
+  fetchBuildingId( id ) {
+    this.myResidentServ.getBuildingId(id);
+    this.mySuggestionServ.getBuildingId(id);    
   }
 
 }

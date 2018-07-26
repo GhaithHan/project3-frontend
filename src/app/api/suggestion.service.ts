@@ -1,63 +1,63 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-import { environment } from "../../environments/environment";
+import { environment } from '../../environments/environment';
+import { Resident } from './resident.service';
 
 const { backendUrl } = environment;
 
 @Injectable({
   providedIn: 'root'
 })
-export class ResidentService {
+export class SuggestionService {
 
   buildingId: string;
 
   constructor(
     private myHttpServ: HttpClient
   ) { }
-  
+
   // GET /api/residents
-  getResidentList() {
+  getSuggestionList() {
     const buildingId = this.buildingId;
     return this.myHttpServ
       .get(
-        `${backendUrl}/api/residents/${buildingId}`,
+        `${backendUrl}/api/suggestions/${buildingId}`,
         { withCredentials: true } 
       )
       .toPromise();
   }
 
   // GET /api/resident/:id
-  getResidentItem(id) {
+  getSuggestionItem(id) {
     // return the Promise of the request (component will ".then()" & ".catch()")
     return this.myHttpServ
       .get(
-        `${backendUrl}/api/resident/${id}`,
+        `${backendUrl}/api/suggestion/${id}`,
         { withCredentials: true } 
       )
       .toPromise();
 }
 
 // DELETE /api/resident/:id
-deleteResidentItem(id) {
+deleteSuggestionItem(id) {
   // return the Promise of the request (component will ".then()" & ".catch()")
   return this.myHttpServ
     .delete(
-      `${backendUrl}/api/resident/${id}`,
+      `${backendUrl}/api/suggestion/${id}`,
       { withCredentials: true } 
     )
     .toPromise();
 }
 
 // POST /api/
-postResident(residentInfo: ResidentSubmission) {
+postSuggestion(suggestionInfo: SuggestionSubmission) {
   // return the Promise of the request (component will ".then()" & ".catch()")
   const buildingId = this.buildingId;
   return this.myHttpServ
     .post(
-      `${backendUrl}/api/residents`,
-      { residentInfo, buildingId },
-      { withCredentials: true } // send cookies across domains
+      `${backendUrl}/api/suggestions`,
+      { suggestionInfo, buildingId },
+      { withCredentials: true } 
     )
     .toPromise();
 }
@@ -68,17 +68,18 @@ getBuildingId(buildingId) {
 
 }
 
-export class Resident {
+
+export class Suggestion {
   _id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
+  description: string;
+  complainant: Resident;
+  category: string;
   createdAt: string;
   updatedAt: string;
 }
 
-export class ResidentSubmission {
-  firstName: string;
-  lastName: string;
-  email: string;
+export class SuggestionSubmission {
+  description: string;
+  category: string;
+  complainant: string;
 }

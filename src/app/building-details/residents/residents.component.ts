@@ -8,9 +8,11 @@ import { ResidentService, Resident, ResidentSubmission } from '../../api/residen
   templateUrl: './residents.component.html',
   styleUrls: ['./residents.component.css']
 })
+
 export class ResidentsComponent implements OnInit {
  userForm: ResidentSubmission = new ResidentSubmission();
  residents: Array<Resident> = [];
+ residentItem: Resident;
  appState: string;
  activeKey: string;
 
@@ -28,6 +30,7 @@ export class ResidentsComponent implements OnInit {
     this.myResidentServ.getResidentList()
      .then((response: Array<Resident>) => {
       this.residents = response;
+      console.log(this.residents);
      })
      .catch((err) => {
       alert("Sorry! We couldn't get our list of residents. 😕");
@@ -46,9 +49,7 @@ export class ResidentsComponent implements OnInit {
     // pass the form inputs to the service
     this.myResidentServ.postResident(this.userForm)
       .then((response: Resident) => {
-        // redirect away to the details page of the new phone
-        // this.myRouterServ.navigateByUrl(`/building/${this.myRouterServ.url}`);
-        this.ngOnInit();
+        this.fetchResidents();
       })
       .catch((err) => {
         alert("Sorry! There was a problem submitting your residents! 😰");
@@ -59,6 +60,7 @@ export class ResidentsComponent implements OnInit {
 
 
   // deleteResidentClick() {
+  //   const { name } = this.get
 
   // }
 

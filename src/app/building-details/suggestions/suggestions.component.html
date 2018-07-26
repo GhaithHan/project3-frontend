@@ -1,3 +1,53 @@
-<p>
-  suggestions works!
-</p>
+<div>
+
+  <h2>add a new Resident</h2>
+
+  
+  <form (ngSubmit)="suggestionSubmit()">
+    <label>
+      firstName
+      <input [(ngModel)]="userForm.description" name="description" type="text" placeholder="" />
+    </label>
+    <br />
+  
+    <label>
+     lastName
+      <input [(ngModel)]="userForm.category" name="category" type="text" placeholder="Kaufmann and Broad" />
+    </label>
+    <br />
+
+       <!-- <label>
+          email
+          <input [(ngModel)]="userForm.complainant" name="complainant" type="text" placeholder="Kaufmann and Broad" />
+        </label>
+        <br /> -->
+
+        <div >
+        <label> complainant
+            <select [(ngModel)]="userForm.complainant" name="complainant">
+              <option value="0">Select</option>
+              <option *ngFor="let resident of residents" value="{{resident._id}}">
+                {{resident.firstName}}
+              </option>
+              </select>
+          </label>
+        </div>
+      
+  
+    <button >Submit A new Suggestion</button>
+  </form>
+
+</div>
+
+
+<div>
+
+  <ul>
+    <li *ngFor="let suggestion of suggestions">
+      <h3>{{suggestion.description}}</h3>
+      <p>by {{suggestion.complainant?.firstName                                                                                    }}</p>
+      <br />
+    </li>
+  </ul>
+
+</div>

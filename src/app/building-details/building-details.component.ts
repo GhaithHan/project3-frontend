@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 
 import { BuildingService, Building } from '../api/building.service';
+import { ResidentService } from '../api/resident.service';
+import { SuggestionService } from '../api/suggestion.service';
 
 @Component({
   selector: 'app-building-details',
@@ -18,7 +20,9 @@ export class BuildingDetailsComponent implements OnInit {
   constructor(
     private myActivatedRouteServ: ActivatedRoute,
     private myBuildingServ: BuildingService,
-    private myRouterServ: Router
+    private myRouterServ: Router,
+    private myResident: ResidentService,
+    private mySuggestion: SuggestionService
   ) { }
 
   ngOnInit() {
@@ -27,6 +31,8 @@ export class BuildingDetailsComponent implements OnInit {
         // "buildingId" comes from the route's PATH
         // { path: "building/:buildingId", ... }
         this.id = myParams.get("buildingId");
+        this.myResident.getBuildingId(this.id);
+        this.mySuggestion.getBuildingId(this.id);
         this.fetchBuildingDetails();
     });
   }

@@ -13,7 +13,7 @@
       <h3>{{onebuilding.adress}}</h3>
       <p>by {{onebuilding.promoter}}</p>
       <br />
-      <a [routerLink]="['/building', onebuilding._id]">Acess Platform</a>
+      <a [routerLink]="['/building', onebuilding._id]" (click)="fetchBuildingId(onebuilding._id)">Acess Platform</a>
 
     </li>
   </ul>
