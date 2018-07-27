@@ -1,3 +1,131 @@
-<p>
-  payments works!
-</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.css">
+
+
+<div class="top-bar">
+  <div class="row">
+    <div class="top-bar-left">
+      <ul class="menu">
+        <li class="menu-text">Payements</li>  
+      </ul>  
+    </div> 
+    <div class="top-bar-right">
+      
+    </div> 
+  </div>  
+</div>
+<br>
+
+<div *ngIf="appState == 'default'" class="row">
+  <div class="large-6 columns">
+    <button class="button" (click)="changeState('add')">Add Payements</button>
+  </div>
+</div>
+
+<!-- ADD FORM -->
+<div *ngIf="appState == 'add'">
+  <div class="large-12 columns">
+    <h3>Add Payements</h3>
+    <form (ngSubmit)="payementSubmit()">
+        
+        <div class="row">
+          <div class="medium-6 columns">
+            <label> Payer
+              <select [(ngModel)]="userForm.payer" name="payer">
+                <option value="0">Select</option>
+                <option *ngFor="let resident of residents" value="{{resident._id}}">
+                  {{resident.firstName}}
+                </option>
+                </select>
+            </label>
+            <br />
+          </div>
+          <div class="medium-6 columns">
+            <label>
+              Situation
+               <input [(ngModel)]="userForm.situation" name="situation" type="text" placeholder="done or not done" />
+             </label>
+          </div>
+        </div>
+        
+        
+        <div class="row">
+          <div class="large-12">
+            <input type="submit" class="button" value="Submit">  
+          </div>  
+        </div>
+    </form>  
+  </div>  
+</div>
+
+<div *ngIf="appState == 'extend'">
+  <div class="row">
+    <div class="large-12 large-1-offset columns">
+      <button class="button alert" (click)="changeState('default')">Go back</button>  
+    </div>  
+  </div>
+  <div *ngFor="let payement of payements">
+    <div *ngIf="payement._id == activeKey">
+      <div class="row">
+        <!-- <div class="large-5 columns large-offset-1">
+          <h3>{{business.company}}</h3>
+          <p>Category: {{business.category}}</p>
+          <p>Years In Business: {{business.years_in_business}}
+          <p>{{business.description}}</p>
+        </div>   -->
+        
+        <div class="large-5 columns large-offset-1">
+          <h4>Situation Info</h4>
+          <ul>
+            <li>Payer: {{payement.payer?.firstName}}</li>    
+            <li>Situation: {{payement.situation}}</li>  
+            <!-- <li>Email: {{payement.category}}</li>   -->
+          </ul>
+        </div> 
+      </div>  
+    </div> 
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div >
+        <table>
+          <thead>
+            <tr>
+              <th>Payer</th>
+              <th>Situation</th>
+              <!-- <th>Complainant</th> -->
+              <th></th>  
+            </tr>  
+          </thead>
+          <tbody>
+            <tr *ngFor="let payement of payements" >
+                <td>{{payement.payer?.firstName}}</td>
+                <td>{{payement.situation}}</td>
+                <!-- <td>{{suggestion.category}}</td> -->
+                <td>
+                  <button (click)="changeState('extend', payement._id)" class="button">More</button>
+                  <button  class="button alert">Delete</button>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>  
+  </div>  
+</div> 
+
+
+
+
+
+
+
+
+
+
+
+<script
+  src="https://code.jquery.com/jquery-1.12.4.js"
+  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.js"></script>

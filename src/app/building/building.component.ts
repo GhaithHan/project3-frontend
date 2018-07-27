@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { BuildingSubmission, BuildingService, Building } from '../api/building.service';
 import { ResidentService } from '../api/resident.service';
 import { SuggestionService } from '../api/suggestion.service';
+import { PayementService } from '../api/payement.service';
 
 
 
@@ -20,7 +21,8 @@ export class BuildingComponent implements OnInit {
     private myBuildingServ: BuildingService,
     private myRouterServ: Router,
     private myResidentServ: ResidentService,
-    private mySuggestionServ: SuggestionService
+    private mySuggestionServ: SuggestionService,
+    private myPayementServ: PayementService
   ) { }
 
   ngOnInit() {
@@ -41,7 +43,8 @@ export class BuildingComponent implements OnInit {
 
   fetchBuildingId( id ) {
     this.myResidentServ.getBuildingId(id);
-    this.mySuggestionServ.getBuildingId(id);    
+    this.mySuggestionServ.getBuildingId(id); 
+    this.myPayementServ.getBuildingId(id); 
   }
 
 }

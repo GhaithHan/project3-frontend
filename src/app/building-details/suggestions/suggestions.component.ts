@@ -14,6 +14,8 @@ export class SuggestionsComponent implements OnInit {
   suggestions: Array<Suggestion> = [];
   suggestionItem: Suggestion;
   residents: Array<Resident> = [];
+  appState: string;
+  activeKey: string;
 
   constructor(
     private mySuggestionServ: SuggestionService,
@@ -22,8 +24,16 @@ export class SuggestionsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.appState = 'default';
     this.fetchSuggestions();
     this.fetchResidents();
+  }
+
+  changeState(state, key = null){
+    if(key){
+      this.activeKey = key;
+    }
+    this.appState = state;
   }
 
   fetchSuggestions() {
@@ -49,6 +59,7 @@ export class SuggestionsComponent implements OnInit {
         alert("Sorry! There was a problem submitting your residents! 😰");
         console.log(err);
       });
+      this.changeState('default');
   }
 
   fetchResidents() {

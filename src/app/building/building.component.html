@@ -1,23 +1,35 @@
+<section class="totalbuilding">
 
+    <h2>Building List</h2>
+    
+    <div>
+    
+      <button routerLink="/building/addbuilding">add building</button>
+    </div>
+    
+    
+    <div >
+    
+      <ul class = "buildinglist">
+ 
+        <li class = "buildingcard" *ngFor="let onebuilding of buildings">
 
-<h2>Building List</h2>
+          <div class= "buildingimage">
+            <img [src]="onebuilding.image" />
+          </div>
 
-<button routerLink="/building/addbuilding">add building</button>
+          <div class="buildinginfo">
+            <h3>{{onebuilding.adress}}</h3>
+            <p>by {{onebuilding.promoter}}</p>
+            <a [routerLink]="['/building', onebuilding._id]" (click)="fetchBuildingId(onebuilding._id)">Acess Platform</a>
+          </div>
+          <br />
+    
+        </li>
+      </ul>
+    
+    </div>
 
-
-<div>
-
-  <ul>
-    <li *ngFor="let onebuilding of buildings">
-      <img [src]="onebuilding.image" />
-      <h3>{{onebuilding.adress}}</h3>
-      <p>by {{onebuilding.promoter}}</p>
-      <br />
-      <a [routerLink]="['/building', onebuilding._id]" (click)="fetchBuildingId(onebuilding._id)">Acess Platform</a>
-
-    </li>
-  </ul>
-
-</div>
+</section>
 
 

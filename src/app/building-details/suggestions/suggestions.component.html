@@ -1,20 +1,22 @@
-<div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.css">
+ 
+ <!-- <div>
 
   <h2>add a new Resident</h2>
 
   
   <form (ngSubmit)="suggestionSubmit()">
     <label>
-      firstName
+      Description
       <input [(ngModel)]="userForm.description" name="description" type="text" placeholder="" />
     </label>
     <br />
   
     <label>
-     lastName
+     Category
       <input [(ngModel)]="userForm.category" name="category" type="text" placeholder="Kaufmann and Broad" />
     </label>
-    <br />
+    <br /> -->
 
        <!-- <label>
           email
@@ -22,7 +24,7 @@
         </label>
         <br /> -->
 
-        <div >
+        <!-- <div >
         <label> complainant
             <select [(ngModel)]="userForm.complainant" name="complainant">
               <option value="0">Select</option>
@@ -45,9 +47,167 @@
   <ul>
     <li *ngFor="let suggestion of suggestions">
       <h3>{{suggestion.description}}</h3>
-      <p>by {{suggestion.complainant?.firstName                                                                                    }}</p>
+      <p>by {{suggestion.complainant?.firstName}}</p>
       <br />
     </li>
   </ul>
 
+</div>  -->
+
+
+
+<div class="top-bar">
+  <div class="row">
+    <div class="top-bar-left">
+      <ul class="menu">
+        <li class="menu-text">Suggestions</li>  
+      </ul>  
+    </div> 
+    <div class="top-bar-right">
+      
+    </div> 
+  </div>  
 </div>
+
+<div *ngIf="appState == 'default'" class="row">
+  <div class="large-6 columns">
+    <button class="button" (click)="changeState('add')">Add Suggestions</button>
+  </div>
+</div>
+
+<!-- ADD FORM -->
+<div *ngIf="appState == 'add'">
+<div class="large-12 columns">
+  <h3>Add Suggestions</h3>
+  <form (ngSubmit)="suggestionSubmit()">
+      
+      <div class="row">
+        <div class="medium-6 columns">
+          <label>
+            Description
+            <input [(ngModel)]="userForm.description" name="description" type="text" placeholder="" />
+          </label>
+          <br />
+        </div>
+        <div class="medium-6 columns">
+          <label>
+            Category
+             <input [(ngModel)]="userForm.category" name="category" type="text" placeholder="Kaufmann and Broad" />
+           </label>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="medium-6 columns">
+          
+            <label> complainant
+                <select [(ngModel)]="userForm.complainant" name="complainant">
+                  <option value="0">Select</option>
+                  <option *ngFor="let resident of residents" value="{{resident._id}}">
+                    {{resident.firstName}}
+                  </option>
+                  </select>
+              </label>
+            
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="large-12">
+          <input type="submit" class="button" value="Submit">  
+        </div>  
+      </div>
+  </form>  
+</div>  
+</div>
+
+
+<div *ngIf="appState == 'extend'">
+  <div class="row">
+    <div class="large-12 large-1-offset columns">
+      <button class="button alert" (click)="changeState('default')">Go back</button>  
+    </div>  
+  </div>
+  <div *ngFor="let suggestion of suggestions">
+    <div *ngIf="suggestion._id == activeKey">
+      <div class="row">
+        <!-- <div class="large-5 columns large-offset-1">
+          <h3>{{business.company}}</h3>
+          <p>Category: {{business.category}}</p>
+          <p>Years In Business: {{business.years_in_business}}
+          <p>{{business.description}}</p>
+        </div>   -->
+        
+        <div class="large-5 columns large-offset-1">
+          <h4>Work Info</h4>
+          <ul>
+            <li>Description: {{suggestion.description}}</li>  
+            <li>Email: {{suggestion.category}}</li>  
+            <li>Street: {{suggestion.complainant?.firstName}}</li>    
+          </ul>
+        </div> 
+      </div>  
+    </div> 
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div >
+        <table>
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Complainant</th>
+              <th></th>  
+            </tr>  
+          </thead>
+          <tbody>
+            <tr *ngFor="let suggestion of suggestions" >
+                <td>{{suggestion.description}}</td>
+                <td>{{suggestion.category}}</td>
+                <td>{{suggestion.complainant?.firstName}}</td>
+                <td>
+                  <button (click)="changeState('extend', suggestion._id)" class="button">More</button>
+                  <button  class="button alert">Delete</button>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>  
+  </div>  
+</div> 
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script
+  src="https://code.jquery.com/jquery-1.12.4.js"
+  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.js"></script>

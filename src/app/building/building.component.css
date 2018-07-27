@@ -1,0 +1,28 @@
+  .buildinglist {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .buildingcard {
+    padding: 2%;
+    flex-grow: 1;
+    flex-basis: 16%;
+    display: flex; /* so child elements can use flexbox stuff too! */
+  }
+
+  .buildingimage img {
+    max-width: 100%;
+  }
+
+  .buildinginfo {
+    margin-top: auto;
+  }
+
+  .totalbuilding {
+    background: url(https://thumb.ibb.co/eHCqyo/guus_baggermans_559460_unsplash.jpg) 0 0 no-repeat;
+    background-size: cover;
+
+     height: 650px;
+    /* padding-top: 50px; */ 
+    /* position: relative; */
+  }

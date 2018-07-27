@@ -15,8 +15,10 @@ export class ResidentsComponent implements OnInit {
  residentItem: Resident;
  appState: string;
  activeKey: string;
+ id: string;
 
   constructor(
+    private myActivatedRouteServ: ActivatedRoute,
     private myResidentServ: ResidentService,
     private myRouterServ: Router
   ) { }
@@ -24,6 +26,19 @@ export class ResidentsComponent implements OnInit {
   ngOnInit() {
     this.appState = 'default';
     this.fetchResidents();
+    // this.myActivatedRouteServ.paramMap
+    // .subscribe((myParams) => {
+    //   // "phoneId" comes from the route's PATH
+    //   // { path: "phone/:phoneId", ... }
+    //   this.id = myParams.get("???Id");
+    // });
+  }
+  
+  changeState(state, key = null){
+    if(key){
+      this.activeKey = key;
+    }
+    this.appState = state;
   }
 
   fetchResidents() {
@@ -38,12 +53,6 @@ export class ResidentsComponent implements OnInit {
      });
   }
 
-  changeState(state, key = null){
-    if(key){
-      this.activeKey = key;
-    }
-    this.appState = state;
-  }
 
   residentSubmit() {
     // pass the form inputs to the service
@@ -60,8 +69,20 @@ export class ResidentsComponent implements OnInit {
 
 
   // deleteResidentClick() {
-  //   const { name } = this.get
+  // const { firstName } = this.residentItem;
+  //   const isOkay = confirm(`Delete phone ${firstName}?`);
 
+  //   if (isOkay) {
+  //     this.myResidentServ.deleteResidentItem(this.id)
+  //       .then(() => {
+  //         // redirect away to the list page
+  //         this.myRouterServ.navigateByUrl("/phones");
+  //       })                // res.redirect("/phones") in Express
+  //       .catch((err) => {
+  //         alert("Sorry! There was a problem deleting the phone. 😨");
+  //         console.log(err);
+  //       });
+  //    }
   // }
 
 }

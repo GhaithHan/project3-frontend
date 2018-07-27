@@ -96,12 +96,132 @@
     </div>  
   </div> -->
 
-  <div>
+  <div class="top-bar">
+    <div class="row">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="menu-text">Residents</li>  
+        </ul>  
+      </div> 
+      <div class="top-bar-right">
+        
+      </div> 
+    </div>  
+  </div>
+  <br>
 
-    <h2>add a new Resident</h2>
+  <div *ngIf="appState == 'default'" class="row">
+    <div class="large-6 columns">
+      <button class="button" (click)="changeState('add')">Add Residents</button>
+    </div>
+  </div>
+
+  <!-- ADD FORM -->
+<div *ngIf="appState == 'add'">
+  <div class="large-12 columns">
+    <h3>Add Residents</h3>
+    <form (ngSubmit)="residentSubmit()">
+        
+        <div class="row">
+          <div class="medium-6 columns">
+            <label>
+              first Name
+              <input [(ngModel)]="userForm.firstName" name="firstName" type="text" placeholder="40 Rue de colisé Paris" />
+            </label>
+            <br />
+          </div>
+          <div class="medium-6 columns">
+            <label>
+              last Name
+               <input [(ngModel)]="userForm.lastName" name="lastName" type="text" placeholder="Kaufmann and Broad" />
+             </label>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="medium-6 columns">
+            <label>
+              email
+              <input [(ngModel)]="userForm.email" name="email" type="text" placeholder="Kaufmann and Broad" />
+            </label>
+          </div>
+        </div>
+        
+        
+        <div class="row">
+          <div class="large-12">
+            <input type="submit" class="button" value="Submit">  
+          </div>  
+        </div>
+    </form>  
+  </div>  
+</div>
+  
+
+  <div *ngIf="appState == 'extend'">
+    <div class="row">
+      <div class="large-12 large-1-offset columns">
+        <button class="button alert" (click)="changeState('default')">Go back</button>  
+      </div>  
+    </div>
+    <div *ngFor="let resident of residents">
+      <div *ngIf="resident._id == activeKey">
+        <div class="row">
+          <!-- <div class="large-5 columns large-offset-1">
+            <h3>{{business.company}}</h3>
+            <p>Category: {{business.category}}</p>
+            <p>Years In Business: {{business.years_in_business}}
+            <p>{{business.description}}</p>
+          </div>   -->
+          
+          <div class="large-5 columns large-offset-1">
+            <h4>Contact Info</h4>
+            <ul>
+              <li>Phone: {{resident.firstName}}</li>  
+              <li>Email: {{resident.lastName}}</li>  
+              <li>Street: {{resident.email}}</li>    
+            </ul>
+          </div> 
+        </div>  
+      </div> 
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div >
+          <table>
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th></th>  
+              </tr>  
+            </thead>
+            <tbody>
+              <tr *ngFor="let resident of residents" >
+                  <td>{{resident.firstName}}</td>
+                  <td>{{resident.lastName}}</td>
+                  <td>{{resident.email}}</td>
+                  <td>
+                    <button (click)="changeState('extend', resident._id)" class="button">More</button>
+                    <button  class="button secondary">Edit</button>
+                    <button  class="button alert">Delete</button>
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>  
+    </div>  
+  </div> 
+
+
+
+
 
     
-    <form (ngSubmit)="residentSubmit()">
+    <!-- <form (ngSubmit)="residentSubmit()">
       <label>
         firstName
         <input [(ngModel)]="userForm.firstName" name="firstName" type="text" placeholder="40 Rue de colisé Paris" />
@@ -123,7 +243,7 @@
       <button >Submit My new resident</button>
     </form>
 
-</div>
+
 
 
   <div>
@@ -136,7 +256,7 @@
       </li>
     </ul>
   
-  </div>
+  </div> -->
 
   <script
   src="https://code.jquery.com/jquery-1.12.4.js"

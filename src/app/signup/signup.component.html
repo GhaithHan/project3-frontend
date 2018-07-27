@@ -1,33 +1,33 @@
-<section>
+<section class="signupform">
 
   <form (ngSubmit)="signupSubmit()" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
-    First Name:
+    First Name
     <mat-form-field>
       <input [(ngModel)]="signupForm.firstName" matInput name="firstName" type="text" placeholder="Ghaith" />
     </mat-form-field> 
     <br /> 
   
-    Last Name:
+    Last Name
     <mat-form-field>
       <input [(ngModel)]="signupForm.lastName" matInput name="lastName" type="text" placeholder="Hannachi" />
     </mat-form-field>
     <br />
   
-    Email:
+    Email
     <mat-form-field>
       <input [(ngModel)]="signupForm.email" matInput name="email" type="email" placeholder="jessica@jones.com" required />
       <mat-error>Email is invalid</mat-error>
   </mat-form-field>
   <br />
 
-  Password:
+  Password
   <mat-form-field hintLabel="Should be at least 6 character long.">
     <input [(ngModel)]="signupForm.originalPassword" matInput name="originalPassword" type="password" placeholder="Your secret is safe with us" minlength="6" #pwInput="ngModel" required />
     <mat-error>Has to be at least 6 characters long.</mat-error><mat-hint align="end"> {{ pwInput.value?.length }} / 6 </mat-hint>
   </mat-form-field>
   <br />
   
-    <button type="submit" mat-raised-button color="primary">Sign Up</button>
+    <button type="submit" mat-raised-button color="warn">Sign Up</button>
   </form>
 </section>
 

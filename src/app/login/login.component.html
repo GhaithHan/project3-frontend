@@ -1,17 +1,20 @@
-<h2>Log In</h2>
+<section class="loginform">
+  
+  
+  <form (ngSubmit)="loginSubmit()" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <mat-form-field class="text">
+      Email
+      <input [(ngModel)]="loginForm.email" matInput name="email" type="email" placeholder="" />
+    </mat-form-field> 
+    <br />
+  
+    <mat-form-field class="text">
+      Password
+      <input [(ngModel)]="loginForm.loginPassword" matInput name="loginPassword" type="password" placeholder="" />
+    </mat-form-field> 
+    <br />
+  
+    <button type="submit" mat-raised-button color="warn">Log In</button>
+  </form>
+</section>
 
-<form (ngSubmit)="loginSubmit()">
-  <label>
-    Email:
-    <input [(ngModel)]="loginForm.email" name="email" type="email" placeholder="jessica@jones.com" />
-  </label>
-  <br />
-
-  <label>
-    Password:
-    <input [(ngModel)]="loginForm.loginPassword" name="loginPassword" type="password" placeholder="We won't tell" />
-  </label>
-  <br />
-
-  <button>Log In</button>
-</form>
