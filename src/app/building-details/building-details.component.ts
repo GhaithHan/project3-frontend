@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BuildingService, Building } from '../api/building.service';
 import { ResidentService } from '../api/resident.service';
 import { SuggestionService } from '../api/suggestion.service';
+import { PayementService } from '../api/payement.service';
 
 @Component({
   selector: 'app-building-details',
@@ -22,6 +23,7 @@ export class BuildingDetailsComponent implements OnInit {
     private myBuildingServ: BuildingService,
     private myRouterServ: Router,
     private myResident: ResidentService,
+    private myPayement: PayementService,
     private mySuggestion: SuggestionService
   ) { }
 
@@ -33,6 +35,7 @@ export class BuildingDetailsComponent implements OnInit {
         this.id = myParams.get("buildingId");
         this.myResident.getBuildingId(this.id);
         this.mySuggestion.getBuildingId(this.id);
+        this.myPayement.getBuildingId(this.id);
         this.fetchBuildingDetails();
     });
   }

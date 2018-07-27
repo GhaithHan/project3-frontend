@@ -1,11 +1,14 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.css">
+
+
+
 <section class="totalbuilding">
 
     <h2>Building List</h2>
     
-    <div>
     
-      <button routerLink="/building/addbuilding">add building</button>
-    </div>
+      <button type="submit" mat-raised-button color="warn" routerLink="/building/addbuilding">add building</button>
+    
     
     
     <div >
@@ -13,17 +16,19 @@
       <ul class = "buildinglist">
  
         <li class = "buildingcard" *ngFor="let onebuilding of buildings">
-
+            <mat-card fxFlex="400px">
           <div class= "buildingimage">
-            <img [src]="onebuilding.image" />
+            <img mat-card-image [src]="onebuilding.image" />
           </div>
-
           <div class="buildinginfo">
-            <h3>{{onebuilding.adress}}</h3>
-            <p>by {{onebuilding.promoter}}</p>
-            <a [routerLink]="['/building', onebuilding._id]" (click)="fetchBuildingId(onebuilding._id)">Acess Platform</a>
+              <mat-card-title>{{onebuilding.adress}}</mat-card-title>
+              <mat-card-subtitle>by {{onebuilding.promoter}}</mat-card-subtitle>
+              <mat-card-actions>
+                  <button type="submit" mat-raised-button color="warn" [routerLink]="['/building', onebuilding._id]" (click)="fetchBuildingId(onebuilding._id)">Acess Platform</button>
+              </mat-card-actions>
           </div>
           <br />
+        </mat-card>
     
         </li>
       </ul>
@@ -33,3 +38,10 @@
 </section>
 
 
+
+
+<script
+  src="https://code.jquery.com/jquery-1.12.4.js"
+  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.js"></script>

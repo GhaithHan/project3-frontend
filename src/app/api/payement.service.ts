@@ -12,6 +12,8 @@ export class PayementService {
  
   buildingId: string;
 
+  
+
   constructor(
     private myHttpServ: HttpClient
   ) { }

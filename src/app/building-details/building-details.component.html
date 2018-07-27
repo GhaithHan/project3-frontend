@@ -1,20 +1,22 @@
-<!-- <h2>Building Details</h2>
 
 
-<h3>{{buildingItem?.adress}}</h3>
-        <p>by {{buildingItem?.promoter}}</p>
-        <p>building functional since {{buildingItem?.dateOfoperation}}</p>
-        <p>the budget I dispose for this Building is {{buildingItem?.budgetDisposed}}</p>
-        <p>inhabutants in this building should pay before {{buildingItem?.dueDate}}</p>
-        <img [src]="buildingItem?.image" />
-<div>
-  <h3>Delete building</h3>
-
-  <button (click)="deleteBuildingClick()">Delete This Property</button>
-</div> -->
 <mat-tab-group>
   <mat-tab label="The Building Details">
-     The Building Details 
+<section  fxLayout fxLayoutAlign="center">
+  <mat-card class="new-building" fxFlex="400px">
+
+  <mat-card-title>Building Details</mat-card-title>
+  <mat-card-subtitle>{{buildingItem?.adress}}</mat-card-subtitle>
+  <mat-card-content>
+      <img mat-card-image [src]="buildingItem?.image">
+      <p>by <span class="text">{{buildingItem?.promoter}}</span></p>
+      <p>building functional since <span class="text">{{buildingItem?.dateOfoperation}}</span></p>
+      <p>the budget I dispose for this Building is <span class="text">{{buildingItem?.budgetDisposed}}</span> $</p>
+      <p>inhabutants in this building should pay before <span class="text">{{buildingItem?.dueDate}}</span></p>
+  </mat-card-content>
+  </mat-card>
+</section>
+
     </mat-tab>
 
   <mat-tab label="Manage Residents">

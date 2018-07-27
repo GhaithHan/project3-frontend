@@ -2,6 +2,10 @@
     margin-top: 50px;
 }
 
+mat-form-field {
+    width: 300px;
+  }
+
 .text {
     font-size: 30px;
     text-align: center;

@@ -207,7 +207,7 @@
                   <td>
                     <button (click)="changeState('extend', resident._id)" class="button">More</button>
                     <button  class="button secondary">Edit</button>
-                    <button  class="button alert">Delete</button>
+                    <button  (click)="deleteResident(resident._id)" class="button alert">Delete</button>
                   </td>
               </tr>
             </tbody>

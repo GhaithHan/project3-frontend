@@ -74,6 +74,10 @@ export class SuggestionsComponent implements OnInit {
      });
   }
 
+  deleteResident(id) {
+    
+  }
+
   fetchBuildingId( id ) {
     this.mySuggestionServ.getBuildingId(id);
   }

@@ -68,21 +68,14 @@ export class ResidentsComponent implements OnInit {
   }
 
 
-  // deleteResidentClick() {
-  // const { firstName } = this.residentItem;
-  //   const isOkay = confirm(`Delete phone ${firstName}?`);
-
-  //   if (isOkay) {
-  //     this.myResidentServ.deleteResidentItem(this.id)
-  //       .then(() => {
-  //         // redirect away to the list page
-  //         this.myRouterServ.navigateByUrl("/phones");
-  //       })                // res.redirect("/phones") in Express
-  //       .catch((err) => {
-  //         alert("Sorry! There was a problem deleting the phone. 😨");
-  //         console.log(err);
-  //       });
-  //    }
-  // }
+  deleteResident( id ) {
+    this.myResidentServ.deleteResidentItem( id )
+    .then(() => {
+    this.fetchResidents();      
+    })
+    .catch(( err ) => {
+      console.log( err );
+    })
+  }
 
 }
