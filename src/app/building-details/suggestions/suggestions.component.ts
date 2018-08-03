@@ -50,7 +50,6 @@ export class SuggestionsComponent implements OnInit {
 
   suggestionSubmit() {
     console.log(this.userForm);
-    // pass the form inputs to the service
     this.mySuggestionServ.postSuggestion(this.userForm)
       .then((response: Suggestion) => {
         this.fetchSuggestions();

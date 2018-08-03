@@ -16,7 +16,7 @@ export class SuggestionService {
     private myHttpServ: HttpClient
   ) { }
 
-  // GET /api/residents
+  // GET /api/suggestions
   getSuggestionList() {
     const buildingId = this.buildingId;
     return this.myHttpServ
@@ -27,7 +27,7 @@ export class SuggestionService {
       .toPromise();
   }
 
-  // GET /api/resident/:id
+  // GET /api/suggestion/:id
   getSuggestionItem(id) {
     // return the Promise of the request (component will ".then()" & ".catch()")
     return this.myHttpServ
@@ -38,7 +38,7 @@ export class SuggestionService {
       .toPromise();
 }
 
-// DELETE /api/resident/:id
+// DELETE /api/suggestion/:id
 deleteSuggestionItem(id) {
   // return the Promise of the request (component will ".then()" & ".catch()")
   return this.myHttpServ
@@ -49,7 +49,7 @@ deleteSuggestionItem(id) {
     .toPromise();
 }
 
-// POST /api/
+// POST /api/suggestions
 postSuggestion(suggestionInfo: SuggestionSubmission) {
   // return the Promise of the request (component will ".then()" & ".catch()")
   const buildingId = this.buildingId;

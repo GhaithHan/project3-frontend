@@ -1,3 +1,4 @@
+<!-- using foundation framework -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.css">
 
 
@@ -66,19 +67,11 @@
   <div *ngFor="let payement of payements">
     <div *ngIf="payement._id == activeKey">
       <div class="row">
-        <!-- <div class="large-5 columns large-offset-1">
-          <h3>{{business.company}}</h3>
-          <p>Category: {{business.category}}</p>
-          <p>Years In Business: {{business.years_in_business}}
-          <p>{{business.description}}</p>
-        </div>   -->
-        
         <div class="large-5 columns large-offset-1">
           <h4>Situation Info</h4>
           <ul>
             <li>Payer: {{payement.payer?.firstName}}</li>    
             <li>Situation: {{payement.situation}}</li>  
-            <!-- <li>Email: {{payement.category}}</li>   -->
           </ul>
         </div> 
       </div>  
@@ -94,7 +87,6 @@
             <tr>
               <th>Payer</th>
               <th>Situation</th>
-              <!-- <th>Complainant</th> -->
               <th></th>  
             </tr>  
           </thead>
@@ -102,7 +94,6 @@
             <tr *ngFor="let payement of payements" >
                 <td>{{payement.payer?.firstName}}</td>
                 <td>{{payement.situation}}</td>
-                <!-- <td>{{suggestion.category}}</td> -->
                 <td>
                   <button (click)="changeState('extend', payement._id)" class="button">More</button>
                   <button  class="button alert">Delete</button>
@@ -123,7 +114,7 @@
 
 
 
-
+<!-- using foundation framework -->
 <script
   src="https://code.jquery.com/jquery-1.12.4.js"
   integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="

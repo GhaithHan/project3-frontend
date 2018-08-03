@@ -49,7 +49,7 @@ deleteResidentItem(id) {
     .toPromise();
 }
 
-// POST /api/
+// POST /api/residents
 postResident(residentInfo: ResidentSubmission) {
   // return the Promise of the request (component will ".then()" & ".catch()")
   const buildingId = this.buildingId;

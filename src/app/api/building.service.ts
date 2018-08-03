@@ -55,7 +55,7 @@ postBuilding(buildingInfo: BuildingSubmission) {
     .post(
       `${backendUrl}/api/buildings`,
       buildingInfo,
-      { withCredentials: true } // send cookies across domains
+      { withCredentials: true }
     )
     .toPromise();
 }

@@ -18,7 +18,7 @@ export class PayementService {
     private myHttpServ: HttpClient
   ) { }
   
-  // GET /api/residents
+  // GET /api/payements
   getPayementList() {
     const buildingId = this.buildingId;
     return this.myHttpServ
@@ -29,7 +29,7 @@ export class PayementService {
       .toPromise();
   }
 
-  // GET /api/resident/:id
+  // GET /api/payement/:id
   getPayementItem(id) {
     // return the Promise of the request (component will ".then()" & ".catch()")
     return this.myHttpServ
@@ -40,7 +40,7 @@ export class PayementService {
       .toPromise();
 }
 
-// DELETE /api/resident/:id
+// DELETE /api/payement/:id
 deletePayementItem(id) {
   // return the Promise of the request (component will ".then()" & ".catch()")
   return this.myHttpServ
@@ -51,7 +51,7 @@ deletePayementItem(id) {
     .toPromise();
 }
 
-// POST /api/
+// POST /api/payements
 postPayement(payementInfo: PayementSubmission) {
   // return the Promise of the request (component will ".then()" & ".catch()")
   const buildingId = this.buildingId;

@@ -26,12 +26,6 @@ export class ResidentsComponent implements OnInit {
   ngOnInit() {
     this.appState = 'default';
     this.fetchResidents();
-    // this.myActivatedRouteServ.paramMap
-    // .subscribe((myParams) => {
-    //   // "phoneId" comes from the route's PATH
-    //   // { path: "phone/:phoneId", ... }
-    //   this.id = myParams.get("???Id");
-    // });
   }
   
   changeState(state, key = null){
@@ -55,7 +49,6 @@ export class ResidentsComponent implements OnInit {
 
 
   residentSubmit() {
-    // pass the form inputs to the service
     this.myResidentServ.postResident(this.userForm)
       .then((response: Resident) => {
         this.fetchResidents();
